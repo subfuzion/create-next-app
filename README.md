@@ -1,4 +1,4 @@
-# @subfuzion/create-next-app
+# create-next-app
 
 Get up and running with boilerplate for writing, testing, linting, and
 formatting TypeScript for a Next.js app. The generated project includes a
