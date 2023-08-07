@@ -2,7 +2,19 @@
 
 Get up and running with boilerplate for writing, testing, linting, and
 formatting TypeScript for a Next.js app. The generated project includes a
-Dockerfile for deploying the app to a server.
+Dockerfile for deploying the app to a server or containerized cloud
+environment.
+
+```
+npx @subfuzion/create-next-app [path]
+```
+
+> **Note**
+>
+> - If `path` isn't specified, it defaults to the current working directory (`.`).
+> - The directory under `path` must be empty. 
+
+## Details
 
 Configuration boilerplate for jump starting your app development includes:
 
@@ -25,9 +37,7 @@ The generated app includes a number of package scripts for development, includin
 
 It is also configured with a `pre-commit` hook using [Husky] and [lint-staged].
 
-See [@subfuzion/next-starter-app] for details.
-
-## Using @subfuzion/create-next-app
+## Notes
 
 To use the latest published version, enter:
 
@@ -41,13 +51,7 @@ If you want to use the latest version from the GitHub [repo], enter:
 npx github:subfuzion/create-next-app [path]
 ```
 
-> **Note**
->
-> - If `path` isn't specified, it defaults to the current working directory (`.`).
-> - The directory under `path` must be empty. 
-
-> **WARNING**
->
+> **Warning**
 > Currently under development. This implementation assumes:
 > 
 > 1. You're running the latest LTS version (or greater) of [Node.js]
