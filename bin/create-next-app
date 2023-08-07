@@ -1,0 +1,49 @@
+#!/bin/bash
+set -eu
+
+replace() {
+	a="$1"
+	b="$2"
+	f="$3"
+	# handle gnu and bsd sed
+	sed -i.tmp "s/$a/$b/g" "$f" && rm "$f.tmp"
+}
+
+dir="${1:-.}"
+if [[ -z "$dir" ]]; then
+	echo "Error: missing destination pathname"
+	exit 1
+fi
+
+# Can I assume basename on macOS?
+app=${dir##*/}
+if [[ "$app" == "." ]]; then
+	app=${PWD##*/}
+fi
+
+echo "Creating app..."
+git clone --depth=1 https://github.com/subfuzion/next-starter-app.git "$dir"
+rm -rf "$dir/.git" >/dev/null
+
+printf "⏳ Preparing app..."
+cd "$dir"
+#replace "next-starter-app" "$app" package.json
+npm pkg set name="$app"
+npm pkg set version="0.1.0"
+git init 1>/dev/null
+git add . 1>/dev/null
+git commit -m "Initial commit" 1>/dev/null
+git branch -M main
+npm install 1>/dev/null
+npm run prepare 1>/dev/null && \
+	npx husky add .husky/pre-commit "npx lint-staged --allow-empty" && \
+	git add . && \
+	git commit -m "chore: prepare pre-commit hook"
+
+echo "✅ Success: created next-starter-app ($app)"
+echo "🚀 You're ready to start coding!"
+if [[ "$dir" != "." ]]; then
+	echo "Enter:"
+	printf "\tcd %s\n" "$dir"
+fi
+printf "\t%s\n" "npm run dev"

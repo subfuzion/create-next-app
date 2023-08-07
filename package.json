@@ -1,0 +1,9 @@
+{
+  "name": "@subfuzion/create-next-app",
+  "version": "0.1.0",
+  "description": "Create a Next.js app that can be containerized",
+  "license": "MIT",
+  "bin": {
+    "create-next-app": "bin/create-next-app"
+  }
+}
