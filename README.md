@@ -64,7 +64,7 @@ npx github:subfuzion/create-next-app [path]
 
 ## Source
 
-The source for the generated app is in the [subfuzuion/next-starter-app]
+The source for the generated app is in the [@subfuzion/next-starter-app]
 repo.
 
 ## License
